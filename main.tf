@@ -164,7 +164,7 @@ resource "konnect_portal_page" "apiops_developer_portal_home" {
   title       = "Kong API Dev Portal"
   description = "Start building and innovating with our APIs"
   status      = "published"
-  visibility  = "private"
+  visibility  = "public"
 
   content = <<-EOT
     ---
@@ -564,7 +564,7 @@ resource "konnect_portal_page" "apiops_developer_portal_apis" {
   title       = "APIs"
   description = "Explore a wide range of API products in our Developer Portal designed for fast, flexible development."
   status      = "published"
-  visibility  = "private"
+  visibility  = "public"
 
   content = <<-EOT
     ---
@@ -602,7 +602,7 @@ resource "konnect_portal_page" "apiops_developer_portal_getting_started" {
   title       = "Getting started"
   description = "Get started with our new Developer Portal!"
   status      = "published"
-  visibility  = "private"
+  visibility  = "public"
 
   content = <<-EOT
     ---
@@ -938,7 +938,7 @@ resource "konnect_portal_page" "apiops_developer_portal_guides" {
   title       = "Guides"
   description = "Step-by-step guides to help you build, integrate, and optimize with our platform. Start coding faster with practical examples and best practices."
   status      = "published"
-  visibility  = "private"
+  visibility  = "public"
 
   content = <<-EOT
     ---
@@ -1104,7 +1104,7 @@ resource "konnect_portal_page" "apiops_developer_portal_document_apis" {
   title       = "Document APIs"
   description = "Discover best practices, tools, and examples to help developers understand and use your APIs with confidence."
   status      = "published"
-  visibility  = "private"
+  visibility  = "public"
   parent_page_id = konnect_portal_page.apiops_developer_portal_guides.id
 
   content = <<-EOT
@@ -1224,7 +1224,7 @@ resource "konnect_portal_page" "apiops_developer_portal_publish_apis" {
   title       = "Publish APIs"
   description = "Learn best practices for exposing, versioning, and managing your APIs to accelerate integration and developer adoption."
   status      = "published"
-  visibility  = "private"
+  visibility  = "public"
   parent_page_id = konnect_portal_page.apiops_developer_portal_guides.id
 
   content = <<-EOT
@@ -1344,7 +1344,7 @@ resource "konnect_portal_page" "apiops_developer_portal_versioning" {
   title       = "API Versioning"
   description = "Learn best practices for API versioning to manage changes, ensure stability, and support developers over time."
   status      = "published"
-  visibility  = "private"
+  visibility  = "public"
   parent_page_id = konnect_portal_page.apiops_developer_portal_publish_apis.id
 
   content = <<-EOT
