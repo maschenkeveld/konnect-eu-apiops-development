@@ -40,7 +40,7 @@ provider "vault" {
 }
 
 resource "konnect_gateway_control_plane" "apiops_development_gateway_control_plane" {
-  name          = "apiops-development"
+  name          = "development"
   cluster_type  = "CLUSTER_TYPE_CONTROL_PLANE"
   cloud_gateway = false
   auth_type     = "pki_client_certs"
@@ -53,11 +53,11 @@ resource "konnect_gateway_data_plane_client_certificate" "apiops_development_gat
 }
 
 resource "konnect_team" "apiops_development_admin_team" {
-  description = "APIOps Development Admin Team"
+  description = "Development Admin Team"
   # labels = {
   #   key = "value"
   # }
-  name = "apiops-development-admin-team"
+  name = "development-admin-team"
 }
 
 resource "konnect_team_role" "apiops_development_admin_team_role" {
@@ -91,7 +91,7 @@ locals {
     control_plane_endpoint = format("%s:443", replace(konnect_gateway_control_plane.apiops_development_gateway_control_plane.config.control_plane_endpoint, "https://", ""))
     telemetry_endpoint     = format("%s:443", replace(konnect_gateway_control_plane.apiops_development_gateway_control_plane.config.telemetry_endpoint, "https://", ""))
 
-    # Portal coordinates — consumed by the APIOps pipeline (optional OpenBao read) and available to ESO.
+    # Portal coordinates — consumed by the pipeline (optional OpenBao read) and available to ESO.
     portal_id             = konnect_portal.apiops_developer_portal.id
     portal_default_domain = konnect_portal.apiops_developer_portal.default_domain
   }
@@ -100,7 +100,7 @@ locals {
 # Write to OpenBao (for ESO + optional pipeline read). Toggle with var.write_to_openbao.
 resource "vault_generic_secret" "konnect_endpoints" {
   count     = var.write_to_openbao ? 1 : 0
-  path      = "kv/konnect/konnect-eu-apiops-development/connection-details"
+  path      = "kv/konnect/konnect-eu-development/connection-details"
   data_json = jsonencode(local.connection_details)
 }
 
@@ -117,8 +117,8 @@ resource "local_file" "connection_details" {
 resource "konnect_portal" "apiops_developer_portal" {
   provider = konnect-beta
 
-  name         = "apiops-developer-portal"
-  display_name = "APIOps Developer Portal"
+  name         = "developer-portal"
+  display_name = "Developer Portal"
   description  = "Developer portal for APIs on the development control plane"
 
   authentication_enabled    = false
